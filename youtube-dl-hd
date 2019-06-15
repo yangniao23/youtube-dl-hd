@@ -13,6 +13,7 @@ name=$(ls | sed -e "s/.m4a//")
 #download video
 youtube-dl -f 136 "$url"
 #add audio track
-ffmpeg -i $name.mp4 -i $name.m4a -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4
-cp ./output.mp4 ~/Videos/$name.mp4
+ffmpeg -i "$name.mp4" -i "$name.m4a" -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4
+mv ./output.mp4 "$name.mp4"
+mv "$name.mp4" ~/Videos/
 cd ../ && rm -r /tmp/$dir
