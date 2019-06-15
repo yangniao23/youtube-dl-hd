@@ -1,0 +1,18 @@
+#! /bin/bash
+dir=$RANDOM
+if [ "$1" = "" ]; then
+    echo "Please type url."
+    exit 1
+fi
+url=$1
+mkdir /tmp/$dir && cd /tmp/$dir
+#download audio
+youtube-dl -f 140 "$url"
+#Get $name
+name=$(ls | sed -e "s/.m4a//")
+#download video
+youtube-dl -f 136 "$url"
+#add audio track
+ffmpeg -i $name.mp4 -i $name.m4a -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4
+cp ./output.mp4 ~/Videos/$name.mp4
+cd ../ && rm -r /tmp/$dir
