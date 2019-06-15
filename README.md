@@ -1,6 +1,6 @@
 # youtube-dl-hd  
 ### What is this  
-youtube-dl-hd can 720p video and audio for youtube  
+youtube-dl-hd can download 720p video and audio for youtube  
 ### Dependent
 + youtube-dl  
 + sed  
